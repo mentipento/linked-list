@@ -28,7 +28,6 @@ class LinkedList {
       }
       current.next = newNode;
     }
-  
 
   prepend(value) {
 
@@ -43,12 +42,91 @@ class LinkedList {
     this.head = newNode;
     return;
   }
+
+  size() {
+    if (!this.head)
+      return 0;
+
+    let current = this.head;
+    let size = 1;
+
+    while (current.next) {
+      current = current.next;
+      size++;
+    }
+    return size;
+  }
+
+  getHead() {
+    if (!this.head)
+      return null;
+
+    return this.head.value;
+  }
+
+  getTail() {
+    if (!this.head)
+      return null;
+
+    let current = this.head;
+
+    while (current.next) {
+      current = current.next
+    }
+    return current.value;
+  }
+
+  atIndex(index) {
+
+    if (!this.head)
+      return null;
+
+    if (index < 0 || index >= this.size())
+      return null;
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < index) {
+      current = current.next;
+      currentIndex++;
+    }
+    return current.value;
+  }
+
+  pop() {
+    if (!this.head)
+      return
+
+    if (this.size() === 1) {
+      const removed = this.head.value;
+      this.head = null;
+      return removed;
+    }
+
+    const length = this.size();
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < length - 2) {
+      current = current.next;
+      currentIndex++;
+    }
+
+    const removed = current.next.value;
+    current.next = null;
+    return removed;
+      
+  }
+
 }
 
 const linkedList = new LinkedList();
 
-linkedList.prepend(2);
+linkedList.append(2);
 linkedList.append(6);
-linkedList.prepend(4);
+linkedList.append(4);
+linkedList.append(9);
 
-console.log(linkedList.next);
+console.log(linkedList.pop());
+console.log(linkedList.pop());
