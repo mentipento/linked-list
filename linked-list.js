@@ -119,14 +119,56 @@ class LinkedList {
       
   }
 
+  contains(value) {
+
+    let current = this.head;
+
+    while (current) {
+
+      if (current.value === value)
+        return true;
+
+      current = current.next
+    }
+    return false;
+  }
+
+  find(value) {
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (current) {
+      if (current.value === value)
+        return currentIndex;
+
+      current = current.next;
+      currentIndex++;
+    }
+    return null;
+  }
+
+  toString() {
+
+    let current = this.head;
+    let string = '';
+
+    while (current) {
+      string += `( ${current.value} ) -> `;
+      current = current.next;
+
+    }
+    return string + null;
+  }
+
 }
 
 const linkedList = new LinkedList();
 
 linkedList.append(2);
 linkedList.append(6);
-linkedList.append(4);
+linkedList.append(2);
 linkedList.append(9);
 
-console.log(linkedList.pop());
-console.log(linkedList.pop());
+
+console.log(linkedList.toString());
