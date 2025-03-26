@@ -30,21 +30,25 @@ class LinkedList {
     }
   
 
-  // prepend(value) {
+  prepend(value) {
 
-  //   const newNode = new Node(value);
+    const newNode = new Node(value);
 
-  //   if (!this.next) {
-  //     this.next = newNode;
-  //     console.log(this.next);
-  //     return;
-  //   }
-  // }
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+
+    newNode.next = this.head;
+    this.head = newNode;
+    return;
+  }
 }
 
 const linkedList = new LinkedList();
 
-linkedList.append(2);
+linkedList.prepend(2);
 linkedList.append(6);
+linkedList.prepend(4);
 
-console.log(linkedList);
+console.log(linkedList.next);
