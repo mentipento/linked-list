@@ -218,12 +218,13 @@ class LinkedList {
 
 }
 
-const linkedList = new LinkedList();
+const list = new LinkedList();
 
-linkedList.append(1);
-linkedList.append(2);
-linkedList.append(3);
-linkedList.append(4);
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-linkedList.removeAt(3);
-console.log(linkedList.toString());
+console.log(list.toString());
