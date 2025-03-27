@@ -1,5 +1,7 @@
 // linked-list.js
 
+const { error } = require("console");
+
 class Node {
   constructor(value = null) {
     this.value = value;
@@ -161,14 +163,67 @@ class LinkedList {
     return string + null;
   }
 
+  insertAt(value, index) {
+
+    const newNode = new Node(value);
+    const length = this.size();
+
+    if (index < 0 || index > length)
+      throw new Error('Invalid index');
+
+    if (index === 0)
+      return this.prepend(value);
+
+    if (index === length)
+      return this.append(value);
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < index - 1) {
+      current = current.next;
+      currentIndex++;
+    }
+
+    newNode.next = current.next;
+    current.next = newNode;
+  }
+
+  removeAt(index) {
+
+    const length = this.size();
+
+    if (index < 0 || index > length)
+      throw new Error('Invalid index');
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    if (index === length - 1)
+      return this.pop();
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < index - 1) {
+      current = current.next
+      currentIndex++
+    }
+
+    current.next = current.next.next;
+
+  }
+
 }
 
 const linkedList = new LinkedList();
 
+linkedList.append(1);
 linkedList.append(2);
-linkedList.append(6);
-linkedList.append(2);
-linkedList.append(9);
+linkedList.append(3);
+linkedList.append(4);
 
-
+linkedList.removeAt(3);
 console.log(linkedList.toString());
